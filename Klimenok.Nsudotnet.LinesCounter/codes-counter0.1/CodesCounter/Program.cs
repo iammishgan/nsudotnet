@@ -12,11 +12,11 @@ namespace CodesCounter
 		static void Main(string[] args)
 		{
 
-			StartParams startArgs = StartParams.parse(args);
+			StartParams startArgs = StartParams.Parse(args);
 
 
-			if (startArgs.path.Length==0) {
-				startArgs.path=Directory.GetCurrentDirectory();	
+			if (startArgs.Path.Length==0) {
+				startArgs.Path=Directory.GetCurrentDirectory();	
 			}
 
 			List<FileConteiner> files;
@@ -43,13 +43,13 @@ namespace CodesCounter
 			List<ScanInfo> infos = new List<ScanInfo>();
 			ScanInfo info;
 			foreach (FileConteiner file in files) {
-				info = Scanner.scan(file, ScanParameters.getScanParametersForExtension(file.fileType));
+				info = Scanner.Scan(file, ScanParameters.GetScanParametersForExtension(file.FileType));
 				infos.Add(info);
 
-				totalLines += info.rawLinesCount;
-				totalCuttedLines += info.cuttedLinesCount;
-				totalUsefullLines += info.usefullLineCount;
-				totalCommentLines += (info.rawLinesCount - info.cuttedLinesCount);
+				totalLines += info.RawLinesCount;
+				totalCuttedLines += info.CuttedLinesCount;
+				totalUsefullLines += info.UsefullLineCount;
+				totalCommentLines += (info.RawLinesCount - info.CuttedLinesCount);
 
 			}
 
@@ -58,12 +58,7 @@ namespace CodesCounter
 			Console.WriteLine("Total useful lines: " + totalUsefullLines);
 			Console.WriteLine("Total commented lines: " + totalCommentLines);
 
-
-
-
-			//Console.WriteLine(startArgs.ToString());
-
-			Console.Read();
+            Console.Read();
 
 		}
 	}

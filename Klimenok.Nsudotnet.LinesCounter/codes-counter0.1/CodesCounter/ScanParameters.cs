@@ -8,42 +8,41 @@ namespace CodesCounter
 {
 	class ScanParameters
 	{
-		private static ScanParameters C_PLUS_PLUS;
-		private static ScanParameters TEXT;
+		private static ScanParameters _cPlusPlus;
+		private static ScanParameters _text;
 
 		
 		private static ScanParameters XML;
 
-		private static Dictionary<string, ScanParameters> extenstionToNotation = initETNDictionary();
+		private static Dictionary<string, ScanParameters> extenstionToNotation = InitEtnDictionary();
 
-		private static Dictionary<string, ScanParameters> initETNDictionary()
+		private static Dictionary<string, ScanParameters> InitEtnDictionary()
 		{
 			Dictionary<string, ScanParameters> res = new Dictionary<string, ScanParameters>();
 
-			C_PLUS_PLUS = new ScanParameters();
-			C_PLUS_PLUS.setUselessChars(new char[] { '\t', ' ', '\n', '{', '}', '(', ')', ';', '\r' });
-			C_PLUS_PLUS.setCommentRegex("(/\\*[^\\*]*[^/]*/|\\/\\/[^\\n]*)");
+			_cPlusPlus = new ScanParameters();
+			_cPlusPlus.SetUselessChars(new char[] { '\t', ' ', '\n', '{', '}', '(', ')', ';', '\r' });
+			_cPlusPlus.SetCommentRegex("(/\\*[^\\*]*[^/]*/|\\/\\/[^\\n]*)");
 
-			TEXT = new ScanParameters();
-			TEXT.setUselessChars(new char[]{});
+			_text = new ScanParameters();
+			_text.SetUselessChars(new char[]{});
 
-			res.Add("*", TEXT);
+			res.Add("*", _text);
 
-			res.Add(".java", C_PLUS_PLUS);
-			res.Add(".cs", C_PLUS_PLUS);
-			res.Add(".as", C_PLUS_PLUS);
-			res.Add(".cpp", C_PLUS_PLUS);
-			res.Add(".h", C_PLUS_PLUS);
-			res.Add(".c", C_PLUS_PLUS);
+			res.Add(".java", _cPlusPlus);
+			res.Add(".cs", _cPlusPlus);
+			res.Add(".as", _cPlusPlus);
+			res.Add(".cpp", _cPlusPlus);
+			res.Add(".h", _cPlusPlus);
+			res.Add(".c", _cPlusPlus);
 
 
 
 			return res;
 		}
 
-		public static ScanParameters getScanParametersForExtension(string ext) {
+		public static ScanParameters GetScanParametersForExtension(string ext) {
 			ScanParameters p;
-			//Console.WriteLine(">>>"+ext);
 			if(extenstionToNotation.ContainsKey(ext)){
 				p = extenstionToNotation[ext];
 			}else{
@@ -52,15 +51,15 @@ namespace CodesCounter
 			return p;
 		}
 
-        public char[] uselessSymbols { get; set; }
-        public Regex commentRegExp { get; set; }
+        public char[] UselessSymbols { get; set; }
+        public Regex CommentRegExp { get; set; }
 
-		public void setUselessChars(char[] chars) {
-			uselessSymbols = chars;
+		public void SetUselessChars(char[] chars) {
+			UselessSymbols = chars;
 		}
 
-		public void setCommentRegex(string regexString) {
-			commentRegExp = new Regex(regexString);
+		public void SetCommentRegex(string regexString) {
+			CommentRegExp = new Regex(regexString);
 		}
         }
 }

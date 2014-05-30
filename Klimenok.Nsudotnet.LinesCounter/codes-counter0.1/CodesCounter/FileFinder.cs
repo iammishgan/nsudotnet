@@ -12,19 +12,17 @@ namespace CodesCounter
 			string[] files;
 			try
 			{
-				files = Directory.GetFiles(startParams.path, "*.*", SearchOption.AllDirectories);
+				files = Directory.GetFiles(startParams.Path, "*.*", SearchOption.AllDirectories);
 			}
 
 			catch (Exception e) {
 				throw e;
-				//Console.WriteLine(e.Message);
-				//return null;
 			}
 			FileInfo fileInfo;
 			List<FileConteiner> filesList = new List<FileConteiner>();
 			foreach (string filePath in files) {
 				fileInfo = new FileInfo(filePath);
-				if (startParams.checkForAcceptedExtension(fileInfo.Extension)) {
+				if (startParams.CheckForAcceptedExtension(fileInfo.Extension)) {
 					filesList.Add(new FileConteiner(filePath));
 				}
 			}

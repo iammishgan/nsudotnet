@@ -9,27 +9,27 @@ namespace CodesCounter
 	class Scanner
 	{
 
-		public static ScanInfo scan(FileConteiner file, ScanParameters param) {
+		public static ScanInfo Scan(FileConteiner file, ScanParameters param) {
 			ScanInfo info = new ScanInfo();
-			info.path = file.path;
-			info.fileName = file.fileName;
+			info.Path = file.Path;
+			info.FileName = file.FileName;
 
-			string[] rawLines = file.raw.Split('\n');
-            string[] cuttedLines = GetContentWithoutComments(file.raw, param.commentRegExp).Split('\n');
+			string[] rawLines = file.Raw.Split('\n');
+            string[] cuttedLines = GetContentWithoutComments(file.Raw, param.CommentRegExp).Split('\n');
 
-			info.rawLinesCount = rawLines.Length;
-			info.cuttedLinesCount = cuttedLines.Length;
+			info.RawLinesCount = rawLines.Length;
+			info.CuttedLinesCount = cuttedLines.Length;
 
 			int usefullLinesCount = 0;
 
 			foreach (string line in cuttedLines) {
-                if (isUsefulLine(line, param.uselessSymbols))
+                if (IsUsefulLine(line, param.UselessSymbols))
                 {
 					usefullLinesCount++;
 				}
 			}
 
-			info.usefullLineCount = usefullLinesCount;
+			info.UsefullLineCount = usefullLinesCount;
 
 			return info;
 		}
@@ -46,12 +46,12 @@ namespace CodesCounter
 			return res;
 		}
 
-		private static bool isUsefulLine(String line, char[] uselessChars) {
+		private static bool IsUsefulLine(String line, char[] uselessChars) {
 			int scanTo = line.Length;
 			for (int i = 0; i < scanTo; i++)
 			{
 				char c = line[i];
-				if (!isSpecialSymbol(c, uselessChars))
+				if (!IsSpecialSymbol(c, uselessChars))
 				{
 					return true;
 				}
@@ -59,7 +59,7 @@ namespace CodesCounter
 			return false;
 		}
 
-		private static bool isSpecialSymbol(char checkingChar, char[] uselessChars)
+		private static bool IsSpecialSymbol(char checkingChar, char[] uselessChars)
 		{
 			foreach (char symbol in uselessChars)
 			{

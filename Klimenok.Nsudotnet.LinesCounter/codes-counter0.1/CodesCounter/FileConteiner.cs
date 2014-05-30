@@ -9,23 +9,23 @@ namespace CodesCounter
 {
 	class FileConteiner
 	{
-		public string raw { get; set; }
-        public string computed { get; set; }
-        public string path { get; set; }
-        public string fileName { get; set; }
-        public string fileType { get; set; }
+		public string Raw { get; set; }
+        public string Computed { get; set; }
+        public string Path { get; set; }
+        public string FileName { get; set; }
+        public string FileType { get; set; }
 
 		
 
 		public FileConteiner(string path){
 		    using (StreamReader reader = new StreamReader(path)){
-		        raw = reader.ReadToEnd();
+		        Raw = reader.ReadToEnd();
 		    }
 
 		    FileInfo fileInfo = new FileInfo(path);
-			fileName = fileInfo.Name;
-			fileType = fileInfo.Extension;
-			this.path = path;
+			FileName = fileInfo.Name;
+			FileType = fileInfo.Extension;
+			this.Path = path;
 		}
 	}
 }

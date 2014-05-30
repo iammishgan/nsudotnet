@@ -8,34 +8,33 @@ namespace CodesCounter
 
 	class StartParams
 	{
-		public string[] filters=new string[0];
-		public string path="";
+		public string[] Filters=new string[0];
+		public string Path="";
 
 
-		private static string PATH_FLAG = "-p";
-		private static string FILTER_FLAG = "-f";
+	    private const string PathFlag = "-p";
+	    private static string FilterFlag = "-f";
 
 		public override string ToString()
 		{
 			string res = "";
 
-			res += "[Path \'" + path + "\' Filters: ";
+			res += "[Path \'" + Path + "\' Filters: ";
 
-			for (int i = 0; i < filters.Length; i++) {
-				res += filters[i] + (i == filters.Length - 1 ? "]" : "|");
+			for (int i = 0; i < Filters.Length; i++) {
+				res += Filters[i] + (i == Filters.Length - 1 ? "]" : "|");
 			}
 
 			
 			return res;
 		}
 
-		public bool checkForAcceptedExtension(string ext) {
-			if (filters.Length == 0) {
+		public bool CheckForAcceptedExtension(string ext) {
+			if (Filters.Length == 0) {
 				return true;
 			}
 
-			foreach (string filter in filters) {
-				//Console.WriteLine(filter+" "+ext);
+			foreach (string filter in Filters) {
 				if (ext == filter) return true;
 			}
 
@@ -43,15 +42,15 @@ namespace CodesCounter
 
 		}
 
-		public static StartParams parse(string[] args) {
+		public static StartParams Parse(string[] args) {
 			StartParams res = new StartParams();
 			List<String> filters = new List<string>();
 			String path = "";
 
-			const int START = 0, PATH_FLAG_S = 1, FILTER_FLAG_S = 2, PATH_READING = 3, FILTER_READING = 4;
+			const int start = 0, pathFlagS = 1, filterFlagS = 2, pathReading = 3, filterReading = 4;
 
 			string currArg;
-			int state = START;
+			int state = start;
 			int i = 0;
 			while (i != args.Length)
 			{
@@ -59,26 +58,26 @@ namespace CodesCounter
 
 				switch (state)
 				{
-					case START:
-						if (currArg == PATH_FLAG)
+					case start:
+						if (currArg == PathFlag)
 						{
-							state = PATH_FLAG_S;
+							state = pathFlagS;
 						}
 						break;
 
-					case PATH_FLAG_S:
-						if (currArg != FILTER_FLAG)
+					case pathFlagS:
+						if (currArg != FilterFlag)
 						{
 							path += currArg + " ";
 						}
 						else
 						{
-							state = FILTER_FLAG_S;
+							state = filterFlagS;
 						}
 
 						break;
 
-					case FILTER_FLAG_S:
+					case filterFlagS:
 						filters.Add("."+currArg);
 						break;
 				}
@@ -93,8 +92,8 @@ namespace CodesCounter
 				i++;
 			}
 
-			res.filters = fils;
-			res.path=path;
+			res.Filters = fils;
+			res.Path=path;
 
 			return res;
 		}
