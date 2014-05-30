@@ -11,9 +11,7 @@ namespace CodesCounter
 		private static ScanParameters C_PLUS_PLUS;
 		private static ScanParameters TEXT;
 
-		/// <summary>
-		/// Ну это предстоит сделать Вам =)
-		/// </summary>
+		
 		private static ScanParameters XML;
 
 		private static Dictionary<string, ScanParameters> extenstionToNotation = initETNDictionary();
@@ -54,8 +52,8 @@ namespace CodesCounter
 			return p;
 		}
 
-		private char[] uselessSymbols;
-		private Regex commentRegExp;
+        public char[] uselessSymbols { get; set; }
+        public Regex commentRegExp { get; set; }
 
 		public void setUselessChars(char[] chars) {
 			uselessSymbols = chars;
@@ -64,17 +62,5 @@ namespace CodesCounter
 		public void setCommentRegex(string regexString) {
 			commentRegExp = new Regex(regexString);
 		}
-
-		public char[] getUselessChars() {
-			return uselessSymbols;
-		}
-
-		public Regex getCommentRegex() {
-			return commentRegExp;
-		}
-
-
-
-
-	}
+        }
 }

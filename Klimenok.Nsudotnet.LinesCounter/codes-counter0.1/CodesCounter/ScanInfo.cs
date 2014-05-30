@@ -8,23 +8,13 @@ namespace CodesCounter
 	class ScanInfo
 	{
 
-		public int rawLinesCount;
-		public int cuttedLinesCount;
-		public int usefullLineCount;
-		public string fileName;
-		public string path;
+		public int rawLinesCount{ get; set; }
+        public int cuttedLinesCount { get; set; }
+        public int usefullLineCount { get; set; }
+        public string fileName { get; set; }
+        public string path { get; set; }
 
-		/*
-		public string result;
-		public int rawLinesCount;
-		public int usefulLinesCount;
-		public int wc_count;
-		*/
 		public ScanInfo() {
-		
 		}
-
-		//public ScanInfo getScan
-
 	}
 }

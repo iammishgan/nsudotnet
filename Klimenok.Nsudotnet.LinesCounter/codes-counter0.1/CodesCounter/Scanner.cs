@@ -15,7 +15,7 @@ namespace CodesCounter
 			info.fileName = file.fileName;
 
 			string[] rawLines = file.raw.Split('\n');
-			string[] cuttedLines = GetContentWithoutComments(file.raw, param.getCommentRegex()).Split('\n');
+            string[] cuttedLines = GetContentWithoutComments(file.raw, param.commentRegExp).Split('\n');
 
 			info.rawLinesCount = rawLines.Length;
 			info.cuttedLinesCount = cuttedLines.Length;
@@ -23,14 +23,15 @@ namespace CodesCounter
 			int usefullLinesCount = 0;
 
 			foreach (string line in cuttedLines) {
-				if (isUsefulLine(line, param.getUselessChars())) {
+                if (isUsefulLine(line, param.uselessSymbols))
+                {
 					usefullLinesCount++;
 				}
 			}
 
 			info.usefullLineCount = usefullLinesCount;
 
-			return info;// new ScanInfo();
+			return info;
 		}
 
 		private static string GetContentWithoutComments(string content, Regex commentRegex) {
@@ -49,7 +50,7 @@ namespace CodesCounter
 			int scanTo = line.Length;
 			for (int i = 0; i < scanTo; i++)
 			{
-				char c = line[i];//.ChacharAt(i);
+				char c = line[i];
 				if (!isSpecialSymbol(c, uselessChars))
 				{
 					return true;
