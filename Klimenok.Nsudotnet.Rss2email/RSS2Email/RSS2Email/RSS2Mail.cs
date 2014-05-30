@@ -40,8 +40,6 @@ namespace RSS2Email
 		private static void SendEmail(SyndicationItem item)
 		{
 
-            _lastDate = DateTime.Now;
-
             SmtpClient client = new SmtpClient();
             client.Port = 587;
             client.Host = "smtp.gmail.com";
