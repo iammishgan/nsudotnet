@@ -1,5 +1,0 @@
-C:\RSS2Email\RSS2Email\RSS2Email\bin\Debug\RSS2Email.exe.config
-C:\RSS2Email\RSS2Email\RSS2Email\bin\Debug\RSS2Email.exe
-C:\RSS2Email\RSS2Email\RSS2Email\bin\Debug\RSS2Email.pdb
-C:\RSS2Email\RSS2Email\RSS2Email\obj\Debug\RSS2Email.exe
-C:\RSS2Email\RSS2Email\RSS2Email\obj\Debug\RSS2Email.pdb
