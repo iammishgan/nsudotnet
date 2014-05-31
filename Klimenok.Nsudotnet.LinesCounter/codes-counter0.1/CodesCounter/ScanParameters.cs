@@ -21,11 +21,11 @@ namespace CodesCounter
 			Dictionary<string, ScanParameters> res = new Dictionary<string, ScanParameters>();
 
 			_cPlusPlus = new ScanParameters();
-			_cPlusPlus.SetUselessChars(new char[] { '\t', ' ', '\n', '{', '}', '(', ')', ';', '\r' });
-			_cPlusPlus.SetCommentRegex("(/\\*[^\\*]*[^/]*/|\\/\\/[^\\n]*)");
+            _cPlusPlus.UselessSymbols=(new char[] { '\t', ' ', '\n', '{', '}', '(', ')', ';', '\r' });
+            _cPlusPlus.CommentRegExp=new Regex("(/\\*[^\\*]*[^/]*/|\\/\\/[^\\n]*)");
 
 			_text = new ScanParameters();
-			_text.SetUselessChars(new char[]{});
+            _text.UselessSymbols=(new char[] { });
 
 			res.Add("*", _text);
 
@@ -54,12 +54,6 @@ namespace CodesCounter
         public char[] UselessSymbols { get; set; }
         public Regex CommentRegExp { get; set; }
 
-		public void SetUselessChars(char[] chars) {
-			UselessSymbols = chars;
-		}
-
-		public void SetCommentRegex(string regexString) {
-			CommentRegExp = new Regex(regexString);
-		}
+		
         }
 }
